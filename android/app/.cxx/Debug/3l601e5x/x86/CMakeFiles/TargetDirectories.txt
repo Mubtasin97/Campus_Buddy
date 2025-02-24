@@ -1,0 +1,2 @@
+C:/Users/REX/Desktop/Android_Projects/Campus_Buddy/android/app/.cxx/Debug/3l601e5x/x86/CMakeFiles/edit_cache.dir
+C:/Users/REX/Desktop/Android_Projects/Campus_Buddy/android/app/.cxx/Debug/3l601e5x/x86/CMakeFiles/rebuild_cache.dir
