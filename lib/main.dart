@@ -1,5 +1,5 @@
+import 'package:campus_buddy/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Campus buddy",
+      home: const LoginScreen(),
+    );
   }
 }
