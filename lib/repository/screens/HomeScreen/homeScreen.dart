@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:campus_buddy/repository/widgets/UiHelper.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,10 +28,18 @@ class HomePage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(icon: Icon(Icons.home, size: 30, color: Colors.blue), onPressed: () {}),
-            IconButton(icon: Icon(Icons.search, size: 30, color: Colors.blue), onPressed: () {}),
-            IconButton(icon: Icon(Icons.notifications, size: 30, color: Colors.blue), onPressed: () {}),
-            IconButton(icon: Icon(Icons.settings, size: 30, color: Colors.blue), onPressed: () {}),
+            IconButton(
+                icon: Icon(Icons.home, size: 30, color: Colors.blue),
+                onPressed: () {}),
+            IconButton(
+                icon: Icon(Icons.search, size: 30, color: Colors.blue),
+                onPressed: () {}),
+            IconButton(
+                icon: Icon(Icons.notifications, size: 30, color: Colors.blue),
+                onPressed: () {}),
+            IconButton(
+                icon: Icon(Icons.settings, size: 30, color: Colors.blue),
+                onPressed: () {}),
           ],
         ),
       ),
@@ -70,9 +79,15 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Uihelper.customText("Hi, Username", color: Colors.white70, fontSize: 18, fontWeight: FontWeight.bold),
-                            Uihelper.customText("ID: XX-XXXXX-X", color: Colors.white70, fontSize: 14, fontWeight: FontWeight.bold),
-                           // Text("Current Semester: FALL 20XX", textAlign: TextAlign.center, style: TextStyle(color: Colors.white70)),
+                            Uihelper.customText("Hi, Username",
+                                color: Colors.white70,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                            Uihelper.customText("ID: XX-XXXXX-X",
+                                color: Colors.white70,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                            // Text("Current Semester: FALL 20XX", textAlign: TextAlign.center, style: TextStyle(color: Colors.white70)),
                           ],
                         ),
                       ),
@@ -86,9 +101,15 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Uihelper.customText("Current Semester", color: Colors.white70, fontSize: 18, fontWeight: FontWeight.normal),
-                            Uihelper.customText("FALL 24-25", color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-                           // Text("Hi, Username", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 18)),
+                            Uihelper.customText("Current Semester",
+                                color: Colors.white70,
+                                fontSize: 18,
+                                fontWeight: FontWeight.normal),
+                            Uihelper.customText("FALL 24-25",
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                            // Text("Hi, Username", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 18)),
                             //Text("ID: XX-XXXXX-X", textAlign: TextAlign.center, style: TextStyle(color: Colors.white70)),
                           ],
                         ),
@@ -96,9 +117,11 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 15),
-                  LinearProgressIndicator(value: 0.5, backgroundColor: Colors.white38),
+                  LinearProgressIndicator(
+                      value: 0.5, backgroundColor: Colors.white38),
                   SizedBox(height: 5),
-                  Text("You have completed XX credits", style: TextStyle(color: Colors.white)),
+                  Text("You have completed XX credits",
+                      style: TextStyle(color: Colors.white)),
                 ],
               ),
             ),
@@ -107,7 +130,8 @@ class HomePage extends StatelessWidget {
             // Class Notification Card
             Card(
               margin: EdgeInsets.symmetric(horizontal: 12),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
               elevation: 4,
               child: Padding(
                 padding: EdgeInsets.all(12),
@@ -116,7 +140,10 @@ class HomePage extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: Text("12:38 PM", textAlign: TextAlign.center, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                          child: Text("12:38 PM",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 24, fontWeight: FontWeight.bold)),
                         ),
                         Container(
                           height: 50,
@@ -127,9 +154,20 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text("Computer Graphics", textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                              Text("DNO811", textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
-                              Text("Hurry up!! Class is about to start", textAlign: TextAlign.center, style: TextStyle(color: Colors.red)),
+                              Text("Computer Graphics",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold)),
+                              Text("DNO811",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
+                              Text("Hurry up!! Class is about to start",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Colors.red)),
                             ],
                           ),
                         ),
@@ -151,14 +189,14 @@ class HomePage extends StatelessWidget {
                 crossAxisSpacing: 15,
                 mainAxisSpacing: 15,
                 children: [
-                  _buildFeatureItem(Icons.menu_book, "Materials"),
-                  _buildFeatureItem(Icons.person, "Faculty"),
-                  _buildFeatureItem(Icons.account_balance_wallet, "Finance"),
-                  _buildFeatureItem(Icons.bar_chart, "Statistics"),
-                  _buildFeatureItem(Icons.check_circle_outline, "Completed"),
-                  _buildFeatureItem(Icons.lock_open, "Unlocked"),
-                  _buildFeatureItem(Icons.schedule, "Demo Routine"),
-                  _buildFeatureItem(Icons.contacts, "Contacts"),
+                  _buildFeatureItem("assets/icons/materials_icon.svg", "Materials"),
+                  _buildFeatureItem("assets/icons/faculty_icon.svg", "Faculty"),
+                  _buildFeatureItem("assets/icons/finance_icon.svg", "Finance"),
+                  _buildFeatureItem("assets/icons/stat_icon.svg", "Statistics"),
+                  _buildFeatureItem("assets/icons/completed_icon.svg", "Completed"),
+                  _buildFeatureItem("assets/icons/unlock_icon.svg", "Unlocked"),
+                  _buildFeatureItem("assets/icons/routine_icon.svg", "Demo Routine"),
+                  _buildFeatureItem("assets/icons/contacts_icon.svg", "Contacts"),
                 ],
               ),
             ),
@@ -168,17 +206,14 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildFeatureItem(IconData icon, String label) {
+  Widget _buildFeatureItem(String assetPath, String title) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.blue.withOpacity(0.1),
-          child: Icon(icon, size: 30, color: Colors.blue),
-        ),
-        SizedBox(height: 5),
-        Text(label, textAlign: TextAlign.center, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+        SvgPicture.asset(assetPath, width: 40, height: 40), // Load SVG icon
+        SizedBox(height: 8),
+        Text(title,
+            textAlign: TextAlign.center, style: TextStyle(fontSize: 14)),
       ],
     );
   }
