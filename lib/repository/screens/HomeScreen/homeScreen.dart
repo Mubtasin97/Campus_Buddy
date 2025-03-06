@@ -20,27 +20,37 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
-        shape: CircularNotchedRectangle(),
-        notchMargin: 8.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
+      backgroundColor: Colors.grey[270],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25), // Adjust for more/less rounding
+          topRight: Radius.circular(25),
+        ),
+        child: BottomAppBar(
+          color: Colors.white,
+          shape: CircularNotchedRectangle(),
+          notchMargin: 8.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
                 icon: Icon(Icons.home, size: 30, color: Colors.blue),
-                onPressed: () {}),
-            IconButton(
+                onPressed: () {},
+              ),
+              IconButton(
                 icon: Icon(Icons.search, size: 30, color: Colors.blue),
-                onPressed: () {}),
-            IconButton(
+                onPressed: () {},
+              ),
+              IconButton(
                 icon: Icon(Icons.notifications, size: 30, color: Colors.blue),
-                onPressed: () {}),
-            IconButton(
+                onPressed: () {},
+              ),
+              IconButton(
                 icon: Icon(Icons.settings, size: 30, color: Colors.blue),
-                onPressed: () {}),
-          ],
+                onPressed: () {},
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -58,6 +68,7 @@ class HomePage extends StatelessWidget {
               ),
               child: Column(
                 children: [
+                  SizedBox(height: 40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -65,9 +76,9 @@ class HomePage extends StatelessWidget {
                       Icon(Icons.notifications, color: Colors.white),
                     ],
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 10),
                   CircleAvatar(
-                    radius: 45,
+                    radius: 60,
                     backgroundColor: Colors.grey[300],
                   ),
                   SizedBox(height: 15),
@@ -125,16 +136,16 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
 
             // Class Notification Card
             Card(
-              margin: EdgeInsets.symmetric(horizontal: 12),
+              margin: EdgeInsets.symmetric(horizontal: 15),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
               elevation: 4,
               child: Padding(
-                padding: EdgeInsets.all(12),
+                padding: EdgeInsets.all(25),
                 child: Column(
                   children: [
                     Row(
@@ -143,10 +154,10 @@ class HomePage extends StatelessWidget {
                           child: Text("12:38 PM",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold)),
+                                  fontSize: 32, fontWeight: FontWeight.bold)),
                         ),
                         Container(
-                          height: 50,
+                          height: 70,
                           width: 1,
                           color: Colors.grey,
                         ),
@@ -177,30 +188,38 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
 
             // Feature Icons Grid
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 27, vertical: 0),
               child: GridView.count(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 crossAxisCount: 3,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
+                crossAxisSpacing: 18,
+                mainAxisSpacing: 0,
                 children: [
                   _buildFeatureItem(
-                      "assets/icons/material_icon.svg", "Materials"),
-                  _buildFeatureItem("assets/icons/faculty.svg", "Faculty"),
-                  _buildFeatureItem("assets/icons/finance_icon.svg", "Finance"),
-                  _buildFeatureItem("assets/icons/stat_icon.svg", "Statistics"),
+                    "assets/icons/material_icon.png",
+                    "Materials",
+                    () {},
+                  ),
                   _buildFeatureItem(
-                      "assets/icons/completed_icon.svg", "Completed"),
-                  _buildFeatureItem("assets/icons/unlock_icon.svg", "Unlocked"),
+                      "assets/icons/faculty_icon.png", "Faculty", () {}),
                   _buildFeatureItem(
-                      "assets/icons/routine_icon.svg", "Demo Routine"),
+                      "assets/icons/finance_icon.png", "Finance", () {}),
                   _buildFeatureItem(
-                      "assets/icons/contacts_icon.svg", "Contacts"),
+                      "assets/icons/stat_icon.png", "Statistics", () {}),
+                  _buildFeatureItem(
+                      "assets/icons/completed_icon.png", "Completed", () {}),
+                  _buildFeatureItem(
+                      "assets/icons/unlock_icon.png", "Unlocked", () {}),
+                  _buildFeatureItem(
+                      "assets/icons/routine_icon.png", "Demo Routine", () {}),
+                  _buildFeatureItem(
+                      "assets/icons/contact_icon.png", "Contacts", () {}),
+                  _buildFeatureItem(
+                      "assets/icons/feedback.png", "Feedback", () {}),
                 ],
               ),
             ),
@@ -210,15 +229,37 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildFeatureItem(String assetPath, String title) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SvgPicture.asset(assetPath, width: 50, height: 50), // Load SVG icon
-        SizedBox(height: 8),
-        Text(title,
-            textAlign: TextAlign.center, style: TextStyle(fontSize: 14)),
-      ],
+  Widget _buildFeatureItem(String assetPath, String title, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            assetPath,
+            width: 40,
+            height: 40,
+            fit: BoxFit.contain,
+          ),
+          SizedBox(height: 8),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  blurRadius: 40, // Softness of the shadow
+                  // ignore: deprecated_member_use
+                  color: Colors.black.withOpacity(0.5), // Shadow color
+                  offset: Offset(0, 5), // Shadow position (below the text)
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
