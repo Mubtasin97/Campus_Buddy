@@ -189,14 +189,18 @@ class HomePage extends StatelessWidget {
                 crossAxisSpacing: 15,
                 mainAxisSpacing: 15,
                 children: [
-                  _buildFeatureItem("assets/icons/materials_icon.svg", "Materials"),
-                  _buildFeatureItem("assets/icons/faculty_icon.svg", "Faculty"),
+                  _buildFeatureItem(
+                      "assets/icons/material_icon.svg", "Materials"),
+                  _buildFeatureItem("assets/icons/faculty.svg", "Faculty"),
                   _buildFeatureItem("assets/icons/finance_icon.svg", "Finance"),
                   _buildFeatureItem("assets/icons/stat_icon.svg", "Statistics"),
-                  _buildFeatureItem("assets/icons/completed_icon.svg", "Completed"),
+                  _buildFeatureItem(
+                      "assets/icons/completed_icon.svg", "Completed"),
                   _buildFeatureItem("assets/icons/unlock_icon.svg", "Unlocked"),
-                  _buildFeatureItem("assets/icons/routine_icon.svg", "Demo Routine"),
-                  _buildFeatureItem("assets/icons/contacts_icon.svg", "Contacts"),
+                  _buildFeatureItem(
+                      "assets/icons/routine_icon.svg", "Demo Routine"),
+                  _buildFeatureItem(
+                      "assets/icons/contacts_icon.svg", "Contacts"),
                 ],
               ),
             ),
@@ -210,7 +214,7 @@ class HomePage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SvgPicture.asset(assetPath, width: 40, height: 40), // Load SVG icon
+        SvgPicture.asset(assetPath, width: 50, height: 50), // Load SVG icon
         SizedBox(height: 8),
         Text(title,
             textAlign: TextAlign.center, style: TextStyle(fontSize: 14)),
