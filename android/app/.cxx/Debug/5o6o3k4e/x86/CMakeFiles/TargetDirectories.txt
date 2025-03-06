@@ -1,0 +1,2 @@
+N:/Git/Campus_Buddy/android/app/.cxx/Debug/5o6o3k4e/x86/CMakeFiles/edit_cache.dir
+N:/Git/Campus_Buddy/android/app/.cxx/Debug/5o6o3k4e/x86/CMakeFiles/rebuild_cache.dir

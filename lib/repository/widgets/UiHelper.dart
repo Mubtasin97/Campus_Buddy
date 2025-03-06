@@ -7,6 +7,24 @@ class Uihelper {
 
   }
 
+  //Custom Text
+  static Widget customText(String text, { 
+    double fontSize = 14, 
+    FontWeight fontWeight = FontWeight.normal, 
+    Color color = Colors.black 
+  }) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+      ),
+    );
+  }
+
+
+  //Custom Textbox
   static Widget CustomTextBox({required String label, bool isPassword = false}) {
     return TextField(
       obscureText: isPassword,
