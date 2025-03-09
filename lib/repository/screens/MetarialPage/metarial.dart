@@ -101,14 +101,21 @@ class MaterialsPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
             ),
-            SizedBox(height: 10),
-            FloatingActionButton(
-              onPressed: () {
-                // Handle upload action
-              },
-              backgroundColor: Colors.blue,
-              child: Icon(Icons.add, color: Colors.white),
-            ),
+            SizedBox(height: 25),
+            Padding(
+              padding: EdgeInsets.only(
+                  bottom: 30), // Moves the button up by 30 pixels
+              child: FloatingActionButton(
+                onPressed: () {
+                  // Handle upload action
+                },
+                backgroundColor: Colors.blue,
+                child: Icon(Icons.add,
+                    color: Colors.white,
+                    size: 30), // Adjust icon size if needed
+                elevation: 6, // Adds a slight shadow for better visibility
+              ),
+            )
           ],
         ),
       ),
