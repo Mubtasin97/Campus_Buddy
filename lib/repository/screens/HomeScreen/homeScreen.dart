@@ -1,20 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:campus_buddy/repository/widgets/UiHelper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
-  }
-}
+import 'package:campus_buddy/repository/screens/MetarialPage/metarial.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -136,16 +123,16 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 12),
 
             // Class Notification Card
             Card(
-              margin: EdgeInsets.symmetric(horizontal: 15),
+              margin: EdgeInsets.symmetric(horizontal: 10),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
               elevation: 4,
               child: Padding(
-                padding: EdgeInsets.all(25),
+                padding: EdgeInsets.all(15),
                 child: Column(
                   children: [
                     Row(
@@ -157,7 +144,7 @@ class HomePage extends StatelessWidget {
                                   fontSize: 32, fontWeight: FontWeight.bold)),
                         ),
                         Container(
-                          height: 70,
+                          height: 80,
                           width: 1,
                           color: Colors.grey,
                         ),
@@ -188,7 +175,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-
+            SizedBox(height: 0),
             // Feature Icons Grid
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 27, vertical: 0),
@@ -202,7 +189,12 @@ class HomePage extends StatelessWidget {
                   _buildFeatureItem(
                     "assets/icons/material_icon.png",
                     "Materials",
-                    () {},
+                    () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MaterialsPage()));
+                    },
                   ),
                   _buildFeatureItem(
                       "assets/icons/faculty_icon.png", "Faculty", () {}),

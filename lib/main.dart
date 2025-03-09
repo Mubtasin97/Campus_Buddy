@@ -1,3 +1,4 @@
+import 'package:campus_buddy/repository/screens/MetarialPage/metarial.dart';
 import 'package:campus_buddy/repository/screens/HomeScreen/homeScreen.dart';
 import 'package:campus_buddy/repository/screens/login/loginScreen.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Campus buddy",
-      home:  HomePage(),
+      //home:  HomePage(),
+      home: HomePage(),
     );
   }
 }
-
