@@ -101,10 +101,9 @@ class MaterialsPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 10),
             Padding(
-              padding: EdgeInsets.only(
-                  bottom: 30), // Moves the button up by 30 pixels
+              padding: EdgeInsets.only(bottom: 30),
               child: FloatingActionButton(
                 onPressed: () {
                   // Handle upload action

@@ -1,4 +1,5 @@
 import 'package:campus_buddy/repository/screens/MetarialPage/metarial.dart';
+import 'package:campus_buddy/repository/screens/ThankPage/thanks.dart';
 import 'package:campus_buddy/repository/screens/UploadPage/uploadScreen.dart';
 import 'package:campus_buddy/repository/screens/HomeScreen/homeScreen.dart';
 import 'package:campus_buddy/repository/screens/login/loginScreen.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       title: "Campus buddy",
       //home:  HomePage(),
       //home: UploadScreen(),
-       home: MaterialsPage(),
+      // home: MaterialsPage(),
+      home: SubmissionSuccessPage(),
     );
   }
 }
