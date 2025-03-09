@@ -22,7 +22,7 @@ class SubmissionSuccessPage extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -32,7 +32,6 @@ class SubmissionSuccessPage extends StatelessWidget {
                     "Submitted Successfully",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 10),
                   Image.asset(
                     'assets/icons/success.png', // Ensure this image exists
                     width: 360,
@@ -61,7 +60,7 @@ class SubmissionSuccessPage extends StatelessWidget {
                           fontSize: 18),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 30),
                   Text("Want to upload more files?",
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20)),
@@ -87,7 +86,7 @@ class SubmissionSuccessPage extends StatelessWidget {
                     },
                     icon: Icon(Icons.home, size: 50, color: Colors.black),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 10),
                 ],
               ),
             ],
