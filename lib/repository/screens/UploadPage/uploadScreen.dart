@@ -58,14 +58,15 @@ class _UploadScreenState extends State<UploadScreen> {
             ),
             SizedBox(height: 40),
             Container(
-              padding: EdgeInsets.all(25),
+              padding: EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: Colors.blue.shade100,
                 borderRadius: BorderRadius.circular(50),
               ),
               child: Text(
                 'Which type material you want to upload?',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(height: 10),
