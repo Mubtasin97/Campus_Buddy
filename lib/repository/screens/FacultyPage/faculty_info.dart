@@ -21,7 +21,7 @@ class FacultyDetailsPage extends StatelessWidget {
           children: [
             SizedBox(height: 10),
             CircleAvatar(
-              radius: 150,
+              radius: 110,
               backgroundImage: AssetImage('assets/image/faculty_image.png'),
             ),
             SizedBox(height: 20),
@@ -94,7 +94,7 @@ class FacultyDetailsPage extends StatelessWidget {
               "*To see unofficial review about him/her click the button\n*Please read the disclaimer before proceeding",
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 14, color: const Color.fromARGB(255, 22, 21, 21)),
+                  fontSize: 13, color: const Color.fromARGB(255, 22, 21, 21)),
             ),
             SizedBox(height: 50),
             IconButton(
@@ -103,7 +103,7 @@ class FacultyDetailsPage extends StatelessWidget {
               },
               icon: Icon(Icons.home, size: 60),
             ),
-            SizedBox(height: 20),
+            //SizedBox(height: 20),
           ],
         ),
       ),
