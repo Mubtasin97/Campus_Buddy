@@ -1,3 +1,4 @@
+import 'package:campus_buddy/repository/screens/Courses/courses_main.dart';
 import 'package:campus_buddy/repository/screens/FacultyPage/faculty_info.dart';
 import 'package:campus_buddy/repository/screens/FacultyPage/faculty_main.dart';
 import 'package:campus_buddy/repository/screens/FacultyPage/warning_page.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
       //home: SubmissionSuccessPage(),
       //home: FacultyPage(),
       //home: FacultyDetailsPage(),
-      home: WarningPage(),
+      //home: WarningPage(),
+      home: CoursesPage(),
     );
   }
 }
