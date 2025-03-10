@@ -19,7 +19,6 @@ class WarningPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
             Image.asset(
               'assets/image/warning.png',
               width: 350,
@@ -34,12 +33,12 @@ class WarningPage extends StatelessWidget {
             Text(
               "This is a community feature for students to help each other.\n"
               "The initial data is collected from various Facebook posts and comments. "
-              "Everyone can add review/tips anonymously.\n\n",
+              "Everyone can add review/tips anonymously.\n",
               style: TextStyle(fontSize: 14, color: Colors.black),
               textAlign: TextAlign.center,
             ),
             Text(
-              "NB.: Please do not use any kind of language that can disrespect our honorable faculty members.",
+              "NB: Please do not use any kind of language that can disrespect our honorable faculty members.",
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
