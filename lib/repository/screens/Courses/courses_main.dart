@@ -146,7 +146,7 @@ class CoursesPage extends StatelessWidget {
             ),
             child: Container(
               width: 100, // Adjust width for better shape
-              height: 65, // Set height to fully touch top & bottom
+              height: 85, // Set height to fully touch top & bottom
               color: color, // Course color
               alignment: Alignment.center,
               child: Text(
@@ -169,7 +169,7 @@ class CoursesPage extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 4),
                   Text(
