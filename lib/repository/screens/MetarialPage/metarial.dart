@@ -1,3 +1,4 @@
+import 'package:campus_buddy/repository/screens/UploadPage/uploadScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:campus_buddy/repository/screens/HomeScreen/homeScreen.dart';
 
@@ -108,7 +109,10 @@ class MaterialsPage extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 30),
               child: FloatingActionButton(
                 onPressed: () {
-                  // Handle upload action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UploadScreen()),
+                  );
                 },
                 backgroundColor: Colors.blue,
                 child: Icon(Icons.add,

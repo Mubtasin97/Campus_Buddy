@@ -1,3 +1,4 @@
+import 'package:campus_buddy/repository/screens/ThankPage/thanks.dart';
 import 'package:flutter/material.dart';
 import 'package:campus_buddy/repository/widgets/UiHelper.dart';
 
@@ -27,7 +28,9 @@ class _UploadScreenState extends State<UploadScreen> {
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         foregroundColor: Colors.white,
         backgroundColor: Colors.blue,
@@ -137,7 +140,13 @@ class _UploadScreenState extends State<UploadScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SubmissionSuccessPage()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.blue,
@@ -154,7 +163,9 @@ class _UploadScreenState extends State<UploadScreen> {
                   child: Text('Submit'),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.red,

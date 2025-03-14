@@ -1,3 +1,4 @@
+import 'package:campus_buddy/repository/screens/HomeScreen/homeScreen.dart';
 import 'package:campus_buddy/repository/screens/UploadPage/uploadScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -67,7 +68,10 @@ class SubmissionSuccessPage extends StatelessWidget {
                   SizedBox(height: 10),
                   FloatingActionButton(
                     onPressed: () {
-                      // Handle upload action
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => UploadScreen()),
+                      );
                     },
                     backgroundColor: Colors.blue,
                     child: Icon(Icons.add, color: Colors.white, size: 30),
@@ -82,7 +86,10 @@ class SubmissionSuccessPage extends StatelessWidget {
                   //SizedBox(height: 10),
                   IconButton(
                     onPressed: () {
-                      // Navigate to homepage
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
                     },
                     icon: Icon(Icons.home, size: 50, color: Colors.black),
                   ),
