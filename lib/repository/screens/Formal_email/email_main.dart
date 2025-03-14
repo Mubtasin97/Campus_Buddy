@@ -1,3 +1,5 @@
+import 'package:campus_buddy/repository/screens/Formal_email/account_app.dart';
+import 'package:campus_buddy/repository/screens/Formal_email/bset_app.dart';
 import 'package:campus_buddy/repository/screens/Formal_email/drop_app.dart';
 import 'package:flutter/material.dart';
 
@@ -118,21 +120,5 @@ class _FormalEmailPageState extends State<FormalEmailPage> {
       },
       title: Text(label),
     );
-  }
-}
-
-// Dummy Pages for Navigation
-
-class BSetApplicationPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text('B-set Application')));
-  }
-}
-
-class AccountDeptPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text('Account Dept')));
   }
 }
