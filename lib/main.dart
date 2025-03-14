@@ -6,6 +6,7 @@ import 'package:campus_buddy/repository/screens/MetarialPage/metarial.dart';
 import 'package:campus_buddy/repository/screens/ThankPage/thanks.dart';
 import 'package:campus_buddy/repository/screens/UploadPage/uploadScreen.dart';
 import 'package:campus_buddy/repository/screens/HomeScreen/homeScreen.dart';
+import 'package:campus_buddy/repository/screens/contact/contact_main.dart';
 import 'package:campus_buddy/repository/screens/login/loginScreen.dart';
 
 import 'package:flutter/material.dart';
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
       //home: FacultyPage(),
       //home: FacultyDetailsPage(),
       //home: WarningPage(),
-      home: CoursesPage(),
+      //home: CoursesPage(),
+      home: ContactsPage(),
     );
   }
 }
