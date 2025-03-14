@@ -1,3 +1,5 @@
+import 'package:campus_buddy/repository/screens/FacultyPage/faculty_review.dart';
+import 'package:campus_buddy/repository/screens/HomeScreen/homeScreen.dart';
 import 'package:flutter/material.dart';
 
 class WarningPage extends StatelessWidget {
@@ -51,7 +53,10 @@ class WarningPage extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to Home
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
@@ -68,7 +73,10 @@ class WarningPage extends StatelessWidget {
                 SizedBox(width: 100),
                 ElevatedButton(
                   onPressed: () {
-                    // Proceed anyway action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FacultyReview()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 192, 25, 25),

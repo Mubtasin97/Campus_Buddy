@@ -1,3 +1,5 @@
+import 'package:campus_buddy/repository/screens/FacultyPage/warning_page.dart';
+import 'package:campus_buddy/repository/screens/HomeScreen/homeScreen.dart';
 import 'package:flutter/material.dart';
 
 class FacultyDetailsPage extends StatelessWidget {
@@ -75,7 +77,10 @@ class FacultyDetailsPage extends StatelessWidget {
             SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
-                // Add tips function here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WarningPage()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
@@ -99,7 +104,10 @@ class FacultyDetailsPage extends StatelessWidget {
             SizedBox(height: 50),
             IconButton(
               onPressed: () {
-                // Add home navigation
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
               },
               icon: Icon(Icons.home, size: 60),
             ),

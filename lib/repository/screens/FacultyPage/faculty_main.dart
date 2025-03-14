@@ -1,3 +1,4 @@
+import 'package:campus_buddy/repository/screens/FacultyPage/faculty_info.dart';
 import 'package:flutter/material.dart';
 
 class FacultyPage extends StatelessWidget {
@@ -51,8 +52,11 @@ class FacultyPage extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 20),
                     child: GestureDetector(
                       onTap: () {
-                        // Add navigation or function for each faculty
-                        print("Tapped on ${faculties[index]["name"]}");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FacultyDetailsPage()),
+                        );
                       },
                       child: FacultyCard(
                         courseCode: faculties[index]["code"],
