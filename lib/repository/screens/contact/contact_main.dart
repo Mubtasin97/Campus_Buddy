@@ -1,3 +1,4 @@
+import 'package:campus_buddy/repository/screens/Formal_email/email_main.dart';
 import 'package:flutter/material.dart';
 import 'registrar_page.dart';
 import 'accounts_page.dart';
@@ -46,7 +47,10 @@ class ContactsPage extends StatelessWidget {
             // Email Generator
             GestureDetector(
               onTap: () {
-                print('Generate formal e-mails tapped');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FormalEmailPage()),
+                );
               },
               child: Column(
                 children: [

@@ -1,0 +1,192 @@
+import 'package:flutter/material.dart';
+
+class DropApplicationPage extends StatefulWidget {
+  @override
+  _DropApplicationPageState createState() => _DropApplicationPageState();
+}
+
+class _DropApplicationPageState extends State<DropApplicationPage> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _studentIdController = TextEditingController();
+  final TextEditingController _courseNameController = TextEditingController();
+  final TextEditingController _sectionController = TextEditingController();
+
+  String? _selectedGender;
+
+  // Navigate to GenEmailPage with input data
+  void _generateEmail() {
+    if (_nameController.text.isEmpty ||
+        _studentIdController.text.isEmpty ||
+        _courseNameController.text.isEmpty ||
+        _sectionController.text.isEmpty ||
+        _selectedGender == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please fill all fields')),
+      );
+      return; // Stop if any field is empty
+    }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => GenEmailPage(
+          name: _nameController.text,
+          studentId: _studentIdController.text,
+          courseName: _courseNameController.text,
+          section: _sectionController.text,
+          gender: _selectedGender!,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.pinkAccent,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context); // Go back to previous page
+          },
+        ),
+        title: Text(
+          'Drop Application',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildInputField('Name', 'Enter Your Full Name', _nameController),
+              _buildInputField('Student ID', 'eg. xx-xxxxx-x', _studentIdController),
+              _buildInputField('Course Name', 'Enter Your Full Course Name', _courseNameController),
+              _buildInputField('Section', 'Enter Your Section', _sectionController),
+              SizedBox(height: 20),
+              Text(
+                'Gender',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              DropdownButton<String>(
+                isExpanded: true,
+                value: _selectedGender,
+                hint: Text('Select Gender'),
+                items: ['Male', 'Female'].map((String gender) {
+                  return DropdownMenuItem<String>(
+                    value: gender,
+                    child: Text(gender),
+                  );
+                }).toList(),
+                onChanged: (String? value) {
+                  setState(() {
+                    _selectedGender = value;
+                  });
+                },
+              ),
+              SizedBox(height: 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                    ),
+                    child: Text('Cancel'),
+                  ),
+                  ElevatedButton(
+                    onPressed: _generateEmail,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.pink,
+                    ),
+                    child: Text('Generate'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Helper function to build input fields
+  Widget _buildInputField(String label, String hint, TextEditingController controller) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              hintText: hint,
+              border: OutlineInputBorder(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Navigate to this page with data
+class GenEmailPage extends StatelessWidget {
+  final String name;
+  final String studentId;
+  final String courseName;
+  final String section;
+  final String gender;
+
+  GenEmailPage({
+    required this.name,
+    required this.studentId,
+    required this.courseName,
+    required this.section,
+    required this.gender,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    String emailContent = '''
+Dear Sir/Madam,
+
+I am $name, a student of section $section. I am requesting to drop the course "$courseName". My student ID is $studentId.
+
+Gender: $gender.
+
+I would appreciate your assistance in processing my request.
+
+Thank you for your cooperation.
+
+Sincerely,
+$name
+    ''';
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Generated Email'),
+        backgroundColor: Colors.pinkAccent,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: SingleChildScrollView(
+          child: Text(emailContent, style: TextStyle(fontSize: 16)),
+        ),
+      ),
+    );
+  }
+}
