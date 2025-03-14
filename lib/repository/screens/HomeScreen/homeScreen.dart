@@ -1,16 +1,79 @@
+import 'package:campus_buddy/repository/screens/Courses/courses_main.dart';
+import 'package:campus_buddy/repository/screens/FacultyPage/faculty_main.dart';
+import 'package:campus_buddy/repository/screens/contact/contact_main.dart';
 import 'package:flutter/material.dart';
 import 'package:campus_buddy/repository/widgets/UiHelper.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:campus_buddy/repository/screens/MetarialPage/metarial.dart';
 
 class HomePage extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.grey[270],
+      // Left Sidebar for Menu
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text(
+                'Menu',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ),
+            ListTile(
+              title: Text('Profile'),
+              onTap: () {
+                Navigator.pop(context);
+                // Navigate to Profile page
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+                // Navigate to Settings page
+              },
+            ),
+          ],
+        ),
+      ),
+      // Right Sidebar for Notifications
+      endDrawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text(
+                'Notifications',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ),
+            ListTile(
+              title: Text('Notification 1'),
+              onTap: () {
+                Navigator.pop(context);
+                // Handle Notification 1 action
+              },
+            ),
+            ListTile(
+              title: Text('Notification 2'),
+              onTap: () {
+                Navigator.pop(context);
+                // Handle Notification 2 action
+              },
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(25), // Adjust for more/less rounding
+          topLeft: Radius.circular(25),
           topRight: Radius.circular(25),
         ),
         child: BottomAppBar(
@@ -20,21 +83,36 @@ class HomePage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              // Home Icon
               IconButton(
                 icon: Icon(Icons.home, size: 30, color: Colors.blue),
-                onPressed: () {},
+                onPressed: () {
+                  print("Home icon pressed");
+                  // Optionally navigate to HomePage if needed
+                },
               ),
+              // Search Icon
               IconButton(
                 icon: Icon(Icons.search, size: 30, color: Colors.blue),
-                onPressed: () {},
+                onPressed: () {
+                  print("Search icon pressed");
+                  // Add navigation logic for search
+                },
               ),
+              // Notifications Icon (opens right sidebar)
               IconButton(
                 icon: Icon(Icons.notifications, size: 30, color: Colors.blue),
-                onPressed: () {},
+                onPressed: () {
+                  _scaffoldKey.currentState?.openEndDrawer();
+                },
               ),
+              // Settings Icon
               IconButton(
                 icon: Icon(Icons.settings, size: 30, color: Colors.blue),
-                onPressed: () {},
+                onPressed: () {
+                  print("Settings icon pressed");
+                  // Add navigation logic for settings
+                },
               ),
             ],
           ),
@@ -59,8 +137,20 @@ class HomePage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.menu, color: Colors.white),
-                      Icon(Icons.notifications, color: Colors.white),
+                      // Sidebar (Menu) icon – opens left drawer
+                      IconButton(
+                        icon: Icon(Icons.menu, color: Colors.white),
+                        onPressed: () {
+                          _scaffoldKey.currentState?.openDrawer();
+                        },
+                      ),
+                      // Notification icon – opens right drawer
+                      IconButton(
+                        icon: Icon(Icons.notifications, color: Colors.white),
+                        onPressed: () {
+                          _scaffoldKey.currentState?.openEndDrawer();
+                        },
+                      ),
                     ],
                   ),
                   SizedBox(height: 10),
@@ -85,7 +175,6 @@ class HomePage extends StatelessWidget {
                                 color: Colors.white70,
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold),
-                            // Text("Current Semester: FALL 20XX", textAlign: TextAlign.center, style: TextStyle(color: Colors.white70)),
                           ],
                         ),
                       ),
@@ -107,8 +196,6 @@ class HomePage extends StatelessWidget {
                                 color: Colors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold),
-                            // Text("Hi, Username", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 18)),
-                            //Text("ID: XX-XXXXX-X", textAlign: TextAlign.center, style: TextStyle(color: Colors.white70)),
                           ],
                         ),
                       ),
@@ -165,7 +252,8 @@ class HomePage extends StatelessWidget {
                                       color: Colors.black)),
                               Text("Hurry up!! Class is about to start",
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(color: Colors.red)),
+                                  style: TextStyle(
+                                      color: Colors.red, fontSize: 16)),
                             ],
                           ),
                         ),
@@ -191,27 +279,94 @@ class HomePage extends StatelessWidget {
                     "Materials",
                     () {
                       Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MaterialsPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MaterialsPage()),
+                      );
                     },
                   ),
                   _buildFeatureItem(
-                      "assets/icons/faculty_icon.png", "Faculty", () {}),
+                    "assets/icons/faculty_icon.png",
+                    "Faculty",
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FacultyPage()),
+                      );
+                    },
+                  ),
                   _buildFeatureItem(
-                      "assets/icons/finance_icon.png", "Finance", () {}),
+                    "assets/icons/finance_icon.png",
+                    "Finance",
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FinancePage()),
+                      );
+                    },
+                  ),
                   _buildFeatureItem(
-                      "assets/icons/stat_icon.png", "Statistics", () {}),
+                    "assets/icons/stat_icon.png",
+                    "Statistics",
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => StatisticsPage()),
+                      );
+                    },
+                  ),
                   _buildFeatureItem(
-                      "assets/icons/completed_icon.png", "Completed", () {}),
+                    "assets/icons/completed_icon.png",
+                    "Courses",
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CoursesPage()),
+                      );
+                    },
+                  ),
                   _buildFeatureItem(
-                      "assets/icons/unlock_icon.png", "Unlocked", () {}),
+                    "assets/icons/sos_icon.png",
+                    "SOS",
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SOSPage()),
+                      );
+                    },
+                  ),
                   _buildFeatureItem(
-                      "assets/icons/routine_icon.png", "Demo Routine", () {}),
+                    "assets/icons/routine_icon.png",
+                    "Demo Routine",
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DemoRoutinePage()),
+                      );
+                    },
+                  ),
                   _buildFeatureItem(
-                      "assets/icons/contact_icon.png", "Contacts", () {}),
+                    "assets/icons/contact_icon.png",
+                    "Contacts",
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ContactsPage()),
+                      );
+                    },
+                  ),
                   _buildFeatureItem(
-                      "assets/icons/feedback.png", "Feedback", () {}),
+                    "assets/icons/feedback.png",
+                    "Feedback",
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FeedbackPage()),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -229,8 +384,8 @@ class HomePage extends StatelessWidget {
         children: [
           Image.asset(
             assetPath,
-            width: 40,
-            height: 40,
+            width: 50,
+            height: 50,
             fit: BoxFit.contain,
           ),
           SizedBox(height: 8),
@@ -238,20 +393,71 @@ class HomePage extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
               shadows: [
                 Shadow(
-                  blurRadius: 40, // Softness of the shadow
-                  // ignore: deprecated_member_use
-                  color: Colors.black.withOpacity(0.5), // Shadow color
-                  offset: Offset(0, 5), // Shadow position (below the text)
+                  blurRadius: 400,
+                  color: Colors.black.withOpacity(0.5),
+                  offset: Offset(0, 5),
                 ),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+// Placeholder Pages for Navigation
+
+class FinancePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Finance")),
+      body: Center(child: Text("Finance Page")),
+    );
+  }
+}
+
+class StatisticsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Statistics")),
+      body: Center(child: Text("Statistics Page")),
+    );
+  }
+}
+
+class SOSPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("SOS")),
+      body: Center(child: Text("SOS Page")),
+    );
+  }
+}
+
+class DemoRoutinePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Demo Routine")),
+      body: Center(child: Text("Demo Routine Page")),
+    );
+  }
+}
+
+class FeedbackPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Feedback")),
+      body: Center(child: Text("Feedback Page")),
     );
   }
 }

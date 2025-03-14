@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Campus buddy",
-      //home:  HomePage(),
+      home: HomePage(),
       //home: UploadScreen(),
       // home: MaterialsPage(),
       //home: SubmissionSuccessPage(),
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       //home: FacultyDetailsPage(),
       //home: WarningPage(),
       //home: CoursesPage(),
-      home: ContactsPage(),
+      //home: ContactsPage(),
     );
   }
 }
