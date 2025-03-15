@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class GenEmailPage extends StatelessWidget {
+class GenEmailPage extends StatefulWidget {
   final String name;
   final String studentId;
   final String courseName;
-  final String section;
+  final String? section;
   final String gender;
   final String? semester;
   final String? amount;
   final String? reason;
   final String emailType;
-  final String? accountType; // Used for Accounts Dept requests
+  final String? accountType;
 
   GenEmailPage({
     required this.name,
     required this.studentId,
     required this.courseName,
-    required this.section,
+    this.section,
     required this.gender,
     this.semester,
     this.amount,
@@ -28,99 +28,131 @@ class GenEmailPage extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    // Generate email content based on email type
-    String emailSubject = '';
-    String emailContent = '';
+  _GenEmailPageState createState() => _GenEmailPageState();
+}
 
-    if (emailType == 'drop_application') {
-      emailSubject = 'Course Drop Application';
-      emailContent = '''
+class _GenEmailPageState extends State<GenEmailPage> {
+  late TextEditingController _emailController;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController(text: _generateEmailContent());
+  }
+
+  String _generateEmailContent() {
+    String reasonText = widget.reason ?? "Not specified";
+    String semesterText = widget.semester ?? "Not specified";
+    String amountText = widget.amount ?? "Not specified";
+    String accountTypeText = widget.accountType ?? "Not specified";
+
+    if (widget.emailType == 'drop_application') {
+      return '''
 Dear Sir/Madam,
 
-I am $name, a student of section $section. I am requesting to drop the course "$courseName". My student ID is $studentId.
+I am ${widget.name}, a student of section ${widget.section}. I am requesting to drop the course "${widget.courseName}". My student ID is ${widget.studentId}.
 
-Gender: $gender.
+Gender: ${widget.gender}.
 
 Reason for dropping the course:
-$reason
+$reasonText
 
 I would appreciate your assistance in processing my request.
 
 Thank you.
 
 Sincerely,  
-$name
+${widget.name}
       ''';
-    } else if (emailType == 'bset_application') {
-      emailSubject = 'B-SET Application Request';
-      emailContent = '''
+    } else if (widget.emailType == 'bset') {
+      return '''
 Dear B-SET Committee,
 
-I hope this email finds you well. My name is $name, and I am a student enrolled in the course "$courseName" in section $section. My student ID is $studentId.
+I hope this email finds you well. My name is ${widget.name}, and I am a student enrolled in the course "${widget.courseName}" in section ${widget.section}. My student ID is ${widget.studentId}.
 
 I am applying for the B-SET program and would like to formally submit my request. 
 
-Gender: $gender.
+Gender: ${widget.gender}.
 
 Reason for application:
-$reason
+$reasonText
 
 I kindly request your assistance in processing my application.
 
 Thank you for your time and consideration.
 
 Best regards,  
-$name
+${widget.name}
       ''';
-    } else if (emailType == 'accounts') {
-      emailSubject = 'Accounts Department Request';
-      emailContent = '''
+    } else if (widget.emailType == 'accounts') {
+      return '''
 Dear Accounts Department,
 
-I am $name, a student of section $section, currently enrolled in $semester. My student ID is $studentId.
+I am ${widget.name},  currently enrolled in $semesterText. My student ID is ${widget.studentId}.
 
-Request Type: $accountType  
-Amount: $amount  
+Request Type: $accountTypeText  
+Amount: $amountText  
 
 Reason for Request:  
-$reason
+$reasonText
 
 I kindly request your assistance in processing my request.
 
 Thank you.
 
 Sincerely,  
-$name
+${widget.name}
       ''';
     }
+    return '';
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Generated Email'), backgroundColor: Colors.pinkAccent),
+        title: Text('Generated Email'),
+        backgroundColor: Colors.pinkAccent,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(10)),
-                child: SingleChildScrollView(
-                    child: Text(emailContent, style: TextStyle(fontSize: 16))),
+            // Editable Text Box with Scroll
+            Container(
+              width: 400,
+              height: 600,
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black38),
+              ),
+              child: Scrollbar(
+                child: TextField(
+                  controller: _emailController,
+                  maxLines: null, // Allows unlimited lines
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                  ),
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ),
             SizedBox(height: 20),
+
+            // Buttons Row
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton.icon(
                   onPressed: () {
-                    Clipboard.setData(ClipboardData(text: emailContent));
+                    Clipboard.setData(
+                        ClipboardData(text: _emailController.text));
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Copied to clipboard!')));
+                      SnackBar(content: Text('Copied to clipboard!')),
+                    );
                   },
                   icon: Icon(Icons.copy),
                   label: Text('Copy'),
@@ -131,8 +163,8 @@ $name
                     final Uri emailUri = Uri(
                       scheme: 'mailto',
                       queryParameters: {
-                        'subject': emailSubject,
-                        'body': emailContent
+                        'subject': 'Generated Email',
+                        'body': _emailController.text,
                       },
                     );
                     if (await canLaunch(emailUri.toString())) {

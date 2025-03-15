@@ -37,7 +37,7 @@ class _DropApplicationPageState extends State<DropApplicationPage> {
           courseName: _courseNameController.text,
           section: _sectionController.text,
           gender: _selectedGender!,
-          emailType: '',
+          emailType: 'drop_application',
         ),
       ),
     );

@@ -10,7 +10,7 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _studentIdController = TextEditingController();
   final TextEditingController _courseNameController = TextEditingController();
-  final TextEditingController _sectionController = TextEditingController();
+  //final TextEditingController _sectionController = TextEditingController();
   final TextEditingController _semesterController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _reasonController = TextEditingController();
@@ -24,7 +24,7 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
         _nameController.text.isEmpty ||
         _studentIdController.text.isEmpty ||
         _courseNameController.text.isEmpty ||
-        _sectionController.text.isEmpty ||
+        //_sectionController.text.isEmpty ||
         _selectedGender == null ||
         _semesterController.text.isEmpty ||
         _amountController.text.isEmpty ||
@@ -43,7 +43,7 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
           name: _nameController.text,
           studentId: _studentIdController.text,
           courseName: _courseNameController.text,
-          section: _sectionController.text,
+          //  section: _sectionController.text,
           gender: _selectedGender!,
           semester: _semesterController.text,
           amount: _amountController.text,
@@ -88,8 +88,8 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
             _buildInputField(
                 'Student ID', 'eg. xx-xxxxx-x', _studentIdController),
             _buildInputField('Program', 'eg. BSc CSE', _courseNameController),
-            _buildInputField(
-                'Section', 'Enter Your Section', _sectionController),
+            //_buildInputField(
+            //  'Section', 'Enter Your Section', _sectionController),
             _buildDropdownField(
               'Gender',
               'Select Gender',
