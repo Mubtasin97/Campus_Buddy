@@ -96,7 +96,7 @@ class CoursesPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 10),
             // Course List
             Expanded(
               child: ListView.builder(

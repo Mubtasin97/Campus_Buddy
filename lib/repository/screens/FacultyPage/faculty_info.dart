@@ -23,7 +23,7 @@ class FacultyDetailsPage extends StatelessWidget {
           children: [
             SizedBox(height: 10),
             CircleAvatar(
-              radius: 110,
+              radius: 100,
               backgroundImage: AssetImage('assets/image/faculty_image.png'),
             ),
             SizedBox(height: 20),
@@ -38,7 +38,7 @@ class FacultyDetailsPage extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   fontSize: 14),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 10),
             Text(
               "DS0301C",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -53,7 +53,7 @@ class FacultyDetailsPage extends StatelessWidget {
                     style: TextStyle(fontSize: 20, color: Colors.black)),
               ],
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 14),
             InkWell(
               onTap: () {
                 // Add link function here
@@ -74,7 +74,7 @@ class FacultyDetailsPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 19),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(

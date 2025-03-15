@@ -121,7 +121,7 @@ ${widget.name}
             // Editable Text Box with Scroll
             Container(
               width: 400,
-              height: 600,
+              height: 500,
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Colors.grey[200],

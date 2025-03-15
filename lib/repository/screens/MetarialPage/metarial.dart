@@ -48,7 +48,7 @@ class MaterialsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 30),
+            SizedBox(height: 10),
             Container(
               padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
               decoration: BoxDecoration(
@@ -61,7 +61,7 @@ class MaterialsPage extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 20),
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -106,7 +106,7 @@ class MaterialsPage extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Padding(
-              padding: EdgeInsets.only(bottom: 30),
+              padding: EdgeInsets.only(bottom: 10),
               child: FloatingActionButton(
                 onPressed: () {
                   Navigator.push(

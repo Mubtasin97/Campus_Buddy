@@ -25,7 +25,7 @@ class WarningPage extends StatelessWidget {
               'assets/image/warning.png',
               width: 350,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 1),
             Text(
               "This feature is in testing state !",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -47,7 +47,7 @@ class WarningPage extends StatelessWidget {
                   fontSize: 14),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

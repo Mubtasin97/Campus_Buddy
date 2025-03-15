@@ -129,8 +129,8 @@ class _UploadScreenState extends State<UploadScreen> {
                 children: [
                   Image.asset(
                     'assets/icons/upload_btn.png',
-                    width: 200,
-                    height: 200,
+                    width: 150,
+                    height: 150,
                   ),
                 ],
               ),

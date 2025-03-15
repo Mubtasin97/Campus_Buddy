@@ -35,8 +35,8 @@ class SubmissionSuccessPage extends StatelessWidget {
                   ),
                   Image.asset(
                     'assets/icons/success.png', // Ensure this image exists
-                    width: 360,
-                    height: 360,
+                    width: 250,
+                    height: 250,
                     fit: BoxFit.contain,
                   ),
                   SizedBox(height: 5),

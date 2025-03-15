@@ -133,7 +133,7 @@ class HomePage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  SizedBox(height: 40),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -384,11 +384,11 @@ class HomePage extends StatelessWidget {
         children: [
           Image.asset(
             assetPath,
-            width: 50,
-            height: 50,
+            width: 46,
+            height: 46,
             fit: BoxFit.contain,
           ),
-          SizedBox(height: 8),
+          SizedBox(height: 6),
           Text(
             title,
             textAlign: TextAlign.center,
