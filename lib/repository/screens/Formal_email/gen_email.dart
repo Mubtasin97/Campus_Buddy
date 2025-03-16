@@ -49,20 +49,13 @@ class _GenEmailPageState extends State<GenEmailPage> {
     if (widget.emailType == 'drop_application') {
       return '''
 Dear Sir/Madam,
-
-I am ${widget.name}, a student of section ${widget.section}. I am requesting to drop the course "${widget.courseName}". My student ID is ${widget.studentId}.
-
-Gender: ${widget.gender}.
-
-Reason for dropping the course:
-$reasonText
-
-I would appreciate your assistance in processing my request.
-
-Thank you.
+I am currently a student of ${widget.courseName} of your section. Because of $reasonText I don't want to continue this course in this semester. I will retake this course in upcoming semester. So please consider me giving a UW in your course. Thank you.
 
 Sincerely,  
 ${widget.name}
+ID: ${widget.studentId}
+Section: ${widget.section}
+Course: ${widget.courseName}
       ''';
     } else if (widget.emailType == 'bset') {
       return '''
@@ -112,7 +105,12 @@ ${widget.name}
     return Scaffold(
       appBar: AppBar(
         title: Text('Generated Email'),
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20), // Rounded bottom edges
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

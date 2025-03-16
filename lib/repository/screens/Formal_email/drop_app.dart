@@ -11,6 +11,7 @@ class _DropApplicationPageState extends State<DropApplicationPage> {
   final TextEditingController _studentIdController = TextEditingController();
   final TextEditingController _courseNameController = TextEditingController();
   final TextEditingController _sectionController = TextEditingController();
+  final TextEditingController _reasonController = TextEditingController();
 
   String? _selectedGender;
 
@@ -20,7 +21,8 @@ class _DropApplicationPageState extends State<DropApplicationPage> {
         _studentIdController.text.isEmpty ||
         _courseNameController.text.isEmpty ||
         _sectionController.text.isEmpty ||
-        _selectedGender == null) {
+        _selectedGender == null ||
+        _reasonController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Please fill all fields')),
       );
@@ -37,6 +39,7 @@ class _DropApplicationPageState extends State<DropApplicationPage> {
           courseName: _courseNameController.text,
           section: _sectionController.text,
           gender: _selectedGender!,
+          reason: _reasonController.text,
           emailType: 'drop_application',
         ),
       ),
@@ -78,6 +81,9 @@ class _DropApplicationPageState extends State<DropApplicationPage> {
                   _courseNameController),
               _buildInputField(
                   'Section', 'Enter Your Section', _sectionController),
+              _buildInputField('Reason', 'Please Provide a detailed reason',
+                  _reasonController,
+                  maxLines: 4),
               SizedBox(height: 20),
               Text(
                 'Gender',
@@ -138,7 +144,8 @@ class _DropApplicationPageState extends State<DropApplicationPage> {
 
   // Helper function to build input fields
   Widget _buildInputField(
-      String label, String hint, TextEditingController controller) {
+      String label, String hint, TextEditingController controller,
+      {int maxLines = 1, bool isNumber = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -150,6 +157,8 @@ class _DropApplicationPageState extends State<DropApplicationPage> {
           ),
           TextField(
             controller: controller,
+            maxLines: maxLines,
+            keyboardType: isNumber ? TextInputType.number : TextInputType.text,
             decoration: InputDecoration(
               hintText: hint,
               border: OutlineInputBorder(),
