@@ -10,7 +10,6 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _studentIdController = TextEditingController();
   final TextEditingController _courseNameController = TextEditingController();
-  //final TextEditingController _sectionController = TextEditingController();
   final TextEditingController _semesterController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _reasonController = TextEditingController();
@@ -24,7 +23,6 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
         _nameController.text.isEmpty ||
         _studentIdController.text.isEmpty ||
         _courseNameController.text.isEmpty ||
-        //_sectionController.text.isEmpty ||
         _selectedGender == null ||
         _semesterController.text.isEmpty ||
         _amountController.text.isEmpty ||
@@ -43,7 +41,6 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
           name: _nameController.text,
           studentId: _studentIdController.text,
           courseName: _courseNameController.text,
-          //  section: _sectionController.text,
           gender: _selectedGender!,
           semester: _semesterController.text,
           amount: _amountController.text,
@@ -59,7 +56,12 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20), // Rounded bottom edges
+          ),
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
@@ -112,12 +114,22 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
                 ElevatedButton(
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: Text('Cancel'),
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: _generateEmail,
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
-                  child: Text('Generate'),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  child: Text(
+                    'Generate',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
                 ),
               ],
             ),

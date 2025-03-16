@@ -35,7 +35,12 @@ class _FormalEmailPageState extends State<FormalEmailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20), // Rounded bottom edges
+          ),
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
@@ -56,13 +61,15 @@ class _FormalEmailPageState extends State<FormalEmailPage> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               decoration: BoxDecoration(
-                color: Colors.red[300],
+                color: const Color.fromARGB(255, 31, 52, 137),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
                 'Please choose your email subject',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
               ),
             ),
             SizedBox(height: 30),
@@ -70,7 +77,7 @@ class _FormalEmailPageState extends State<FormalEmailPage> {
             // Radio Buttons
             _buildRadioOption(0, "Drop Application"),
             _buildRadioOption(1, "B-set Application"),
-            _buildRadioOption(2, "Account Dept"),
+            _buildRadioOption(2, "Account Department"),
 
             SizedBox(height: 40),
 
@@ -83,16 +90,37 @@ class _FormalEmailPageState extends State<FormalEmailPage> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                   ),
-                  child: Text('Cancel'),
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: _navigateToNextPage,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                   ),
-                  child: Text('Proceed'),
+                  child: Text(
+                    'Proceed',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
                 ),
               ],
+            ),
+            SizedBox(height: 60),
+            Text(
+              "*This feature will create a automated generated email using using the data you will enter.\n "
+              "\n"
+              "*You can also edit this as your need before sending.\n",
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
@@ -118,7 +146,13 @@ class _FormalEmailPageState extends State<FormalEmailPage> {
           _selectedOption = val;
         });
       },
-      title: Text(label),
+      title: Text(
+        label,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 }

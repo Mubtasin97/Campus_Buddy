@@ -2,6 +2,7 @@ import 'package:campus_buddy/repository/screens/Courses/courses_main.dart';
 import 'package:campus_buddy/repository/screens/FacultyPage/faculty_info.dart';
 import 'package:campus_buddy/repository/screens/FacultyPage/faculty_main.dart';
 import 'package:campus_buddy/repository/screens/FacultyPage/warning_page.dart';
+import 'package:campus_buddy/repository/screens/Formal_email/email_main.dart';
 import 'package:campus_buddy/repository/screens/MetarialPage/metarial.dart';
 import 'package:campus_buddy/repository/screens/ThankPage/thanks.dart';
 import 'package:campus_buddy/repository/screens/UploadPage/uploadScreen.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Campus buddy",
-      home: HomePage(),
+      //home: HomePage(),
       //home: UploadScreen(),
       // home: MaterialsPage(),
       //home: SubmissionSuccessPage(),
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
       //home: FacultyDetailsPage(),
       //home: WarningPage(),
       //home: CoursesPage(),
-      //home: ContactsPage(),
+      home: ContactsPage(),
+      //home: FormalEmailPage(),
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:campus_buddy/repository/screens/Formal_email/gen_email.dart';
 import 'package:flutter/material.dart';
 
-
 class BSetApplicationPage extends StatefulWidget {
   @override
   _BSetApplicationPageState createState() => _BSetApplicationPageState();
@@ -51,7 +50,12 @@ class _BSetApplicationPageState extends State<BSetApplicationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20), // Rounded bottom edges
+          ),
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
@@ -71,9 +75,12 @@ class _BSetApplicationPageState extends State<BSetApplicationPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildInputField('Name', 'Enter Your Full Name', _nameController),
-              _buildInputField('Student ID', 'eg. xx-xxxxx-x', _studentIdController),
-              _buildInputField('Course Name', 'Enter Your Full Course Name', _courseNameController),
-              _buildInputField('Section', 'Enter Your Section', _sectionController),
+              _buildInputField(
+                  'Student ID', 'eg. xx-xxxxx-x', _studentIdController),
+              _buildInputField('Course Name', 'Enter Your Full Course Name',
+                  _courseNameController),
+              _buildInputField(
+                  'Section', 'Enter Your Section', _sectionController),
               SizedBox(height: 20),
               Text(
                 'Gender',
@@ -111,14 +118,24 @@ class _BSetApplicationPageState extends State<BSetApplicationPage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                     ),
-                    child: Text('Cancel'),
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: _proceed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink,
+                      backgroundColor: Colors.red,
                     ),
-                    child: Text('Proceed'),
+                    child: Text(
+                      'Proceed',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -130,7 +147,9 @@ class _BSetApplicationPageState extends State<BSetApplicationPage> {
   }
 
   // Helper function to build input fields
-  Widget _buildInputField(String label, String hint, TextEditingController controller, {int maxLines = 1}) {
+  Widget _buildInputField(
+      String label, String hint, TextEditingController controller,
+      {int maxLines = 1}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
