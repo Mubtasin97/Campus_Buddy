@@ -82,7 +82,7 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
             _buildDropdownField(
               'Type',
               'Select a type',
-              ['Partial Payment Request', 'Due Clearence Request'],
+              ['Partial Payment', 'Due Clearence '],
               (value) => setState(() => _selectedType = value),
               _selectedType,
             ),
@@ -93,9 +93,9 @@ class _AccountDeptPageState extends State<AccountDeptPage> {
             //_buildInputField(
             //  'Section', 'Enter Your Section', _sectionController),
             _buildDropdownField(
-              'Gender',
-              'Select Gender',
-              ['Male', 'Female'],
+              'Bank',
+              'Select Bank',
+              ['UNITED COMMERCIAL BANK', 'DHAKA BANK', 'NATIONAL CREDIT & COMMERCE BANK'],
               (value) => setState(() => _selectedGender = value),
               _selectedGender,
             ),

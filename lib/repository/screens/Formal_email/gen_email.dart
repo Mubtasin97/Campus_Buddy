@@ -48,7 +48,7 @@ class _GenEmailPageState extends State<GenEmailPage> {
 
     if (widget.emailType == 'drop_application') {
       return '''
-Dear Sir/Madam,
+Hello Sir/Madam,
 I am currently a student of ${widget.courseName} of your section. Because of $reasonText I don't want to continue this course in this semester. I will retake this course in upcoming semester. So please consider me giving a UW in your course. Thank you.
 
 Sincerely,  
@@ -79,22 +79,14 @@ ${widget.name}
       ''';
     } else if (widget.emailType == 'accounts') {
       return '''
-Dear Accounts Department,
+Hello Sir,
 
-I am ${widget.name},  currently enrolled in $semesterText. My student ID is ${widget.studentId}.
-
-Request Type: $accountTypeText  
-Amount: $amountText  
-
-Reason for Request:  
-$reasonText
-
-I kindly request your assistance in processing my request.
-
+I am ${widget.name},  currently enrolled in $semesterText. My student ID is ${widget.studentId}. Due to some circumstance I am unable to pay the full amount. I am willing to pay $accountTypeText of TK $amountText. It will be very helpful if you can give me a new receipt of TK $amountText of ${widget.gender}. It is very urgent. I hope you will consider.
 Thank you.
 
 Sincerely,  
-${widget.name}
+Name: ${widget.name}
+ID: ${widget.studentId}
       ''';
     }
     return '';
